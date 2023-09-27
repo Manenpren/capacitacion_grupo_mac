@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Lista de Pacientes</h1>
+  <ul>
+    {% for patient in patients %}
+      <li><a href="{% url 'patient_detail' patient.id %}">{{ patient.name }}</a></li>
+    {% empty %}
+      <li>No hay pacientes.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'patient_create' %}">Crear Paciente</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pacientes{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about/">Acerca de</a></li>
+                <li><a href="/contact/">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Aquí se mostrará el contenido específico de cada página -->
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Aquí puedes colocar el pie de página común a todas las páginas -->
+        <p>&copy; {{ year }} Hospitales MAC</p>
+    </footer>
+</body>
+</html>

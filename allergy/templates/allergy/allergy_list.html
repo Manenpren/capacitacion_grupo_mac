@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Lista de Alergias</h1>
+  <ul>
+    {% for allergy in allergies %}
+      <li><a href="{% url 'allergy_detail' allergy.id %}">{{ allergy.allergy_name }}</a></li>
+    {% empty %}
+      <li>No hay alergias.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'allergy_create' %}">Crear Alergia</a>
+{% endblock %}

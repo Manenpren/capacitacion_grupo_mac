@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Alergia</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}">
+  </form>
+  <a href="{% url 'allergy_list' %}">Volver a la lista de alergias</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalles del Paciente</h1>
+  <p>Nombre: {{ patient.name }}</p>
+  <p>Sexo: {{ patient.gender }}</p>
+  <p>Fecha de Nacimiento: {{ patient.date_of_birth }}</p>
+  <p>Dirección: {{ patient.address }}</p>
+  <a href="{% url 'patient_update' patient.id %}">Editar Paciente</a>
+  <form action="{% url 'patient_delete' patient.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Eliminar Paciente">
+  </form>
+  <a href="{% url 'patient_list' %}">Volver a la lista de pacientes</a>
+{% endblock %}

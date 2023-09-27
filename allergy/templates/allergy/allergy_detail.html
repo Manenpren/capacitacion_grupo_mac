@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Detalles de la Alergia</h1>
+  <p>Nombre de la Alergia: {{ allergy.allergy_name }}</p>
+  <p>Paciente: {{ allergy.patient.name }}</p>
+  <a href="{% url 'allergy_update' allergy.id %}">Editar Alergia</a>
+  <form action="{% url 'allergy_delete' allergy.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Eliminar Alergia">
+  </form>
+  <a href="{% url 'allergy_list' %}">Volver a la lista de alergias</a>
+{% endblock %}
