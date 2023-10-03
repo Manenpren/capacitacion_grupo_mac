@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'patient',
     'allergy',
+    'django_extensions',    
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'ALLOWED_METHODS': ['GET', 'PUT', 'POST', 'DELETE'], 
+    'APPEND_SLASH': False,    
 }
 
 
 TEST_RUNNER = 'myproyect.custom_test_runner.CustomTestRunner'
+

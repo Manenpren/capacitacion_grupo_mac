@@ -10,13 +10,13 @@ class PatientModelTestCase(TestCase):
             address="123 Main St"
         )
         self.assertEqual(patient.name, "John Doe")
-        # Agrega más aserciones según sea necesario para verificar otros campos
+
 
 class PatientViewTestCase(TestCase):
     def test_patient_list_view(self):
         response = self.client.get('/api/patients/')
         self.assertEqual(response.status_code, 200)
-        # Agrega más aserciones según sea necesario para verificar la lista de pacientes
+
 
     def test_patient_detail_view(self):
         patient = Patient.objects.create(

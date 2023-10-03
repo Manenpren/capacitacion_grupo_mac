@@ -25,7 +25,9 @@ from patient.views import (
     patient_update,
     patient_delete,
     patient_list,
-    PatientViewSet
+    PatientViewSet,
+    PatientAllergiesView,
+    PatientAllergiesViewSet
 )
 
 from allergy.views import (
@@ -42,6 +44,9 @@ router = routers.DefaultRouter()
 router.register(r'patients', PatientViewSet)
 router.register(r'allergies', AllergyViewSet)
 
+simple_router = routers.SimpleRouter()
+simple_router.register(r'patients/(?P<id>\d+)/allergies', PatientAllergiesViewSet, basename='patient-allergies')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('allergies/', allergy_list, name='allergy_list'),
@@ -50,10 +55,13 @@ urlpatterns = [
     path('allergies/<int:pk>/update/', allergy_update, name='allergy_update'),
     path('allergies/<int:pk>/delete/', allergy_delete, name='allergy_delete'),
     path('patients/', patient_list, name='patient_list'),
+    path('', patient_list, name='patient_list_root'),
     path('patients/<int:pk>/', patient_detail, name='patient_detail'),
     path('patients/<int:pk>/allergies', patient__allergies_list, name='patient_allergies_detail'),
     path('patients/create/', patient_create, name='patient_create'),
     path('patients/<int:pk>/update/', patient_update, name='patient_update'),
     path('patients/<int:pk>/delete/', patient_delete, name='patient_delete'),
-    path('api/', include(router.urls)),    
+    path('api/', include(router.urls)),
+    path('api/', include(simple_router.urls)),
+    #path('api/patients/<int:id>/allergies', PatientAllergiesView.as_view(), name='patient-allergies'),
 ]
